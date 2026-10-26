@@ -1,2 +1,2 @@
 # platform
-A multi-tenant SaaS platform for Quranic school management
+A platform for Quranic school management

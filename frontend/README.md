@@ -1,4 +1,3 @@
-cat > README.md <<'EOF'
 # QMS Frontend
 
 The web app for the Quranic Management System. It works on desktop and mobile, with Arabic (RTL) support.

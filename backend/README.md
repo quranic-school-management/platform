@@ -1,4 +1,3 @@
-cat > README.md <<'EOF'
 # QMS Backend
 
 The API for the Quranic Management System. The frontend calls it to log in, manage Halaqat, run sessions, and save attendance.

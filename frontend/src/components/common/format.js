@@ -5,6 +5,5 @@ export const fmtTime = (iso) => (iso ? new Date(iso).toLocaleTimeString(L, { hou
 export const STATUS = { present: 'حاضر', absent: 'غائب', not_recorded: 'لم يُسجَّل' };
 export const TYPE = { hifz: 'حفظ', murajaa: 'مراجعة' };
 export const SESSION_STATUS = { active: 'جارية', completed: 'منتهية', abandoned: 'ملغاة' };
-export const ROLE = { mushrif: 'المشرف', teacher: 'المعلّم', student: 'الطالب وولي الأمر' };
-export const ROLE_HOME = { mushrif: '/mushrif', teacher: '/teacher', student: '/student' };
-export const MIN_PASSWORD_LENGTH = 8;
+export const ROLE = { mushrif: 'المشرف', teacher: 'المعلّم', student: 'الطالب' };
+export const ROLE_HOME = { mushrif: '/mushrif', teacher: '/unauthorized', student: '/unauthorized' };

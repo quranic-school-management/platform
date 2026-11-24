@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/*
+ * ═══════════════════════════════════════════════════════════════════════
+ *  أَتْرُجَة — QMS Design Token System
+ *  Emerald-and-Gold theme, Arabic RTL-first.
+ *
+ *  All design tokens are defined here as CSS custom properties AND as
+ *  Tailwind @theme values so they can be used both ways:
+ *    • CSS:      var(--color-brand)
+ *    • Tailwind: className="bg-brand text-on-brand"
+ *
+ *  Pages and features should ONLY use these tokens — never raw color
+ *  values. This ensures visual consistency and easy theme changes.
+ * ═══════════════════════════════════════════════════════════════════════
+ */
+
+/* ── Tailwind Theme Extension ───────────────────────────────────────── */
+@theme {
+  /* Brand / Identity */
+  --color-brand: oklch(33% .07 165);
+  --color-brand-hover: oklch(41% .075 165);
+  --color-brand-rule: oklch(45% .06 160);
+  --color-on-brand: oklch(96.5% .016 90);
+  --color-on-brand-muted: oklch(82% .03 150);
+
+  /* Surface / Paper */
+  --color-paper: oklch(96.5% .016 90);
+  --color-paper-elevated: oklch(99% .006 90);
+  --color-paper-sunken: oklch(92.5% .022 90);
+
+  /* Text / Ink */
+  --color-ink: oklch(24% .045 165);
+  --color-muted: oklch(44% .025 165);
+
+  /* Accent (Gold) */
+  --color-accent: oklch(80% .14 85);
+  --color-accent-hover: oklch(66% .19 40);
+  --color-accent-ink: oklch(24% .045 165);
+  --color-gold-line: oklch(72% .1 85);
+
+  /* Semantic */
+  --color-success: oklch(42% .1 155);
+  --color-success-soft: oklch(92% .04 155);
+  --color-danger: #8a1c14;
+  --color-danger-soft: #fbe9e6;
+  --color-focus: oklch(50% .12 85);
+  --color-rule: oklch(87% .022 90);
+
+  /* Typography */
+  --font-display: Ruwudu, "Noto Naskh Arabic", serif;
+  --font-body: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-quran: Ruwudu, "Noto Naskh Arabic", serif;
+
+
+  /* Border Radius */
+  --radius-card: 10px;
+  --radius-entry: 14px;
+  --radius-pill: 6px;
+
+  /* Shadows */
+  --shadow-lift: 0 1px 1px oklch(18% .006 60 / .1), 0 24px 44px -20px oklch(18% .006 60 / .42);
+  --shadow-card: 0 1px 3px oklch(18% .006 60 / .08), 0 4px 12px -4px oklch(18% .006 60 / .12);
+
+  /* Transitions */
+  --transition-fast: 120ms ease-out;
+}
+
+/* ── Base / Reset ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: clip;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  font-weight: 400;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+h1 { font-size: 2.25rem; letter-spacing: 0; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+a { color: inherit; }
+a, button, input, select { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ── Reusable Component Classes ─────────────────────────────────────── */
+
+/*
+ * Buttons: `.btn` base, `.btn-primary` for accent, `.btn-sm` for compact.
+ * These are defined as CSS components (not Tailwind utilities) so they
+ * can be used with <Link> and <button> equally, and each page doesn't
+ * need to repeat the full utility string.
+ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 1.25rem;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-pill);
+  background: var(--color-paper-elevated);
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 var(--color-paper-elevated), 0 1px 1px var(--color-rule);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.btn:hover {
+  background: var(--color-paper-sunken);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  border-color: var(--color-ink);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-sm {
+  min-height: 36px;
+  padding: 0 0.75rem;
+}
+
+.btn-danger {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+/* ── Field error state ──────────────────────────────────────────────── */
+.field-error input,
+.field-error select {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 1px var(--color-danger);
+}

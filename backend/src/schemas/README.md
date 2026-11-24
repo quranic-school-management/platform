@@ -1,1 +1,0 @@
-here you create file such ass userSchema.sql and inside it you put the table schema
